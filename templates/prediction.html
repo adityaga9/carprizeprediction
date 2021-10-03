@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Predict automobile price</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font: 20px Montserrat, sans-serif;
+            line-height: 1.8;
+            color: #674EA7;
+        }
+        p {font-size: 16px;}
+        .margin {margin-bottom: 45px;}
+        .bg-1 {
+            background-color: #674EA7   ; /* Green 1abc9c*/
+            color: #674EA7;
+        }
+        .bg-2 {
+            background-color: #674EA7; /* Dark Blue */
+            color: #674EA7;
+        }
+        .bg-3 {
+            background-color: #674EA7; /* White */
+            color: #674EA7;
+        }
+        .bg-4 {
+            background-color: #674EA7; /* Black Gray */
+            color: #674EA7;
+        }
+        .container-fluid {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 0;
+            border-radius: 0;
+            margin-bottom: 0;
+            font-size: 14px;
+            letter-spacing: 5px;
+        }
+        .navbar-nav  li a:hover {
+            color: #674EA7 !important;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/predict">Predict</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <center><h2>Predict The Car Prize</h2></center>
+
+    <form class="form-horizontal" action="/predict" method="post">
+
+        <div class="form-group">
+            <label for="safety">Safety:</label>
+            <input type="number" class="form-control" id="firs" placeholder="Enter the risky factor b/w -3 to 3" name="symb" required = "required">
+        </div>
+        Select The Fuel-type: <select name="Fuel_Ty" id="fuel" required = "required">
+        <option value="0">gas</option>
+        <option value="1">diesel</option>
+        </select>
+        <br> </br>
+        Select The Number Of doors: <select name="door" id="door">
+        <option value="2">two</option>
+        <option value="4">four</option>
+        </select>
+        <br> </br>
+        <div class="form-group">
+            <label for="safety">Enter the Width of car:</label>
+            <input type="number" class="form-control" id="width" placeholder="Enter the width from 60.3 to 72.3" name="width">
+        </div>
+        <div class="form-group">
+            <label for="e_size">Number Of Cylinders:</label>
+            <input type="number" class="form-control" id="second" placeholder="Enter the num-of-cylinders 8, 5, 4, 6, 3, 12, 2" name="cylinder" required = "required">
+        </div>
+        <div class="form-group">
+            <label for="hp">Enter The Horsepower:</label>
+            <input type="number" class="form-control" id="fifth" placeholder="Enter The horsepower from 48 to 288" name="hp" required = "required">
+        </div>
+        <div class="form-group">
+            <label for="hp">Enter the city-mpg:</label>
+            <input type="number" class="form-control" id="third" placeholder="Enter The city-mpg from 13 to 49" name="city" required = "required">
+        </div>
+        <div class="form-group">
+            <label for="hp">Enter the highway-mpg:</label>
+            <input type="number" class="form-control" id="fourth" placeholder="Enter The highway-mpg from 16 to 54" name="highway" required = "required">
+        </div>
+
+        <button type="submit" class="btn btn-success" name="submit">Submit</button>
+            </form>
+
+    {% if msg=="done" %}
+        <div class="alert alert-success">
+            <strong>Success!</strong> Prize Predicted.
+        </div>
+        <div class="alert alert-info">
+            <p>The Prize is: {{ op }}</p>
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
